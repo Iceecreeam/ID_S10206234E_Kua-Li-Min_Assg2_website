@@ -1,14 +1,153 @@
-.topText{
-    font-size: 300%;
-    padding: 0;
-    margin: 0;
+body{
+    background-color: #cccccc;
+    font-family: 'Titillium Web', sans-serif;
+    letter-spacing: 0.2vw;
 }
 
-h1{
+
+/*set font for headers and remove padding from bootstrap*/
+.index-tiles>div>.topText, h1, h2, h3, h4{
+    font-family: 'Dosis', sans-serif;
+    letter-spacing: 0.35vw;
     padding: 0;
     margin: 0;
+    font-size: 5vw
+}
+
+
+
+
+/*'DAILY EXPENSES' Month*/
+#topText{
+    background-color: #ebebeb;
+    padding: 0
+}
+#topText > div > h1{
+    letter-spacing: 1vw;
+    font-size: 8vw;
+    padding-top: 1.5vw;
+    line-height: 6vw;
+}
+
+#topText > div > p{
+    letter-spacing: 0.3vw;
+    font-size: 2.4vw;
+}
+
+
+
+/*Wallet Selection*/
+.index-wallet-section{
+    border-radius: 7px;
+    margin: 3.5% auto;
+    padding-bottom: 0.3%;
+    background-color: #e5e5e5;
+    line-height: 35px;
+}
+p.panel-footer{
+    font-size: 1.9vw;
+    font-weight: bold;
+    margin: 1.5% 0;
+}
+
+
+
+/*add buttons*/
+.plus-button{
+    height: 5.5vw;
+    width: 5.5vw;
+    font-size: 9.9vw;
+    line-height: 3.2vw;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: #cccccc;
+    color: #ebebeb;
+}
+
+
+
+
+.index-tiles{
+    column-count: 2;
+    column-gap: 6%;
+    width: 93%;
+    margin: 5% auto;
 }
 
 .index-tiles > div{
-    margin-top: 5%;
+    border-radius: 15px;
+    background-color: #ebebeb;
+    margin-top: 6%;
+    break-inside: avoid-column; /*prevents each tile from breaking https://stackoverflow.com/questions/7785374/how-to-prevent-column-break-within-an-element*/
+}
+
+
+
+
+
+@media only screen and (max-width: 900px) {
+    /*'DAILY EXPENSES' Month*/
+
+    #topText{
+        padding-bottom: 0.1%;
+    }
+    #topText > div > h1{
+        letter-spacing: 2.5vw;
+        font-size: 13vw;
+        padding-top: 1.5vw;
+        line-height: 12.6vw;
+    }
+    #topText > div > p{
+        letter-spacing: 0.5vw;
+        font-size: 6vw;
+        line-height: 5vw;
+    }
+
+    .index-tiles{
+        column-count: 1;
+    }
+
+    h2{
+        font-size: 8vw;
+        margin-bottom: 1%;
+    }
+
+    /*wallet selection*/
+    .index-wallet-container>div{
+        margin-bottom:1%;
+    }
+    p.panel-footer{
+        font-size: 2.5vw;
+        margin: 0.8% 0;
+    }
+
+
+    /*add buttons*/
+    .plus-button{
+        height: 11vw;
+        width: 11vw;
+        font-size: 19.8vw;
+        line-height: 6.4vw;
+        margin-bottom: 1%;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .index-wallet-container>div{
+        margin-bottom:3%;
+    }
+    p.panel-footer{
+        font-size: 4.5vw;
+        line-height: 6vw;
+    }
+
+
+    /*add buttons*/
+    .plus-button{
+        height: 16.5vw;
+        width: 16.5vw;
+        font-size: 29.7vw;
+        line-height: 9.6vw;
+    }
 }

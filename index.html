@@ -18,59 +18,67 @@
 
         <!-- CSS -->
         <link rel="stylesheet" href="style.css">
+
+        <!--Fonts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400&display=swap" rel="stylesheet">
+        <!--font-family: 'Titillium Web', sans-serif;-->
+        <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap" rel="stylesheet">
+        <!--font-family: 'Dosis', sans-serif;-->
+
+
     </head>
 
 
 
     <body>
 
-        <div class="jumbotron topText" id = "topText">
+        <div class="jumbotron bg-default topText" id = "topText">
             <div class="container text-center col-12">
               <h1>EXPENSE TRACKER</h1>      
-              <p>Month</p>
+              <p class="p-0">Month</p>
             </div>
         </div>
 
         <!--wallet selection-->
-        <div class="col-10 text-center index-wallet-section" style="margin: 0 auto"><br>    
+        <div class="col-md-11 col-12 text-center index-wallet-section"><br>    
             <h2>Wallets</h2>
-            <div class="row col-12 d-flex-wrap justify-content-center index-wallet-container"><br>
-                  <div class="col-3 index-wall">
+            <div class="row col-12 mx-auto d-flex-wrap index-wallet-container"><br>
+                  <div class="col-md-3 col-sm-4 col-6 index-wall">
                     <div class="panel">
                       <div class="panel-body"><img src="https://placehold.it/150x150?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                      <h4 class="panel-footer">Wallet Name</h4>
+                      <p class="panel-footer">Wallet Name</p>
                     </div>
                   </div>
-                  <div class="col-3 index-wall"> 
+                  <div class="col-md-3 col-sm-4 col-6 index-wall"> 
                     <div class="panel">
                       <div class="panel-body"><img src="https://placehold.it/150x150?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                      <h4 class="panel-footer">Wallet Name</h4>
+                      <p class="panel-footer">Wallet Name</p>
                     </div>
                   </div> 
-                  <div class="col-3 index-wall"> 
+                  <div class="col-md-3 col-sm-4 col-6 index-wall"> 
                     <div class="panel">
                       <div class="panel-body"><img src="https://placehold.it/150x150?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                      <h4 class="panel-footer">Wallet Name</h4>
+                      <p class="panel-footer">Wallet Name</p>
                     </div>
                   </div>
-                  <div class="col-3 index-wall"> 
+                  <div class="col-md-3 col-sm-4 col-6 index-wall"> 
                     <div class="panel">
                       <div class="panel-body"><img src="https://placehold.it/150x150?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                      <h4 class="panel-footer">Wallet Name</h4>
+                      <p class="panel-footer">Wallet Name</p>
                     </div>
                   </div>
             </div>
-            <div class="add-wallet" style="margin: 0 auto">
-              <p>plus button</p>
-            </div>
+            <div class="mx-auto plus-button" id="wallet"><p class="mx-auto"></p>+</p></div>
         </div>
 
         <!--information tiles-->
         <div class="col-12 index-tiles">
 
 
-
-            <div class="col-5 amountSpent">
+            <!--amount spent-->
+            <div class="col-12 amountSpent">
                 <div class="jumbotron bg-transparent topText">
                   <div class="text-center">
                     <h3>$$$$</h3>    
@@ -79,14 +87,15 @@
               </div>
               <div>
                 <div class="progress" style="height:30px;margin:0 auto">
-                  <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">money</div>
                   <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                   <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
             </div>
 
-            <div class="col-5 BigPur">
+            <!--biggest purchase-->
+            <div class="col-12 BigPur">
               <div class="jumbotron bg-transparent topText">
                 <div class="text-center">
                   <h3>Biggest Purchase</h3>
@@ -96,86 +105,116 @@
               <span>item item </span>
               <span class="value">$$$$</span>
             </div>
-          </div>
+            </div>
 
-          <div class="col-5 topWallet">
-            <div class="jumbotron bg-transparent topWalletText">
-              <div class="text-center">
-                <h3>Top Wallets Used</h3>
+            <!--top wallet-->
+            <div class="col-12 topWallet">
+              <div class="jumbotron bg-transparent topText">
+                <div class="text-center">
+                  <h3>Top Wallets Used</h3>
+                </div>
+            </div>
+              <div class="w-75 d-flex flex-wrap index-amountSpentWallet" style="margin:0 auto">
+                <div class="col-7 ml-5">Amount Spent</div>
+                <span class="col-6">item item </span>
+                <span class="col-6 text-right value">$$$$</span>
               </div>
-          </div>
-            <div class="w-75 d-flex flex-wrap index-amountSpentWallet" style="margin:0 auto">
-              <div class="col-7 ml-5">Amount Spent</div>
-              <span class="col-6">item item </span>
-              <span class="col-6 text-right value">$$$$</span>
+            <br>
+              <div class="w-75 d-flex flex-wrap index-purchaseQtyWallet" style="margin:0 auto">
+                <div class="col-7 ml-5">Purchase Quantity</div>
+                <span class="col-6">item item </span>
+                <span class="col-6 text-right value">$$$$</span>
+              </div>
             </div>
-          <br>
-            <div class="w-75 d-flex flex-wrap index-purchaseQtyWallet" style="margin:0 auto">
-              <div class="col-7 ml-5">Purchase Quantity</div>
-              <span class="col-6">item item </span>
-              <span class="col-6 text-right value">$$$$</span>
-            </div>
-        </div>
 
+            <!--currency converter-->
+            <div class="col-12 d-flex flex-wrap justify-content-center CurrConv">
 
-        <div class="col-5 CurrConv">
-          <div class="jumbotron bg-transparent topText">
-            <div class="text-center">
-              <h3>Currency Converter</h3>
-            </div>
-        </div>
-        
-
-        <div class="col-12 d-flex flex-nowrap">
-
-              <div class="col-6 CurrVald">
-                <div class="col-3 mx-auto justify-content-center dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Country
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">AKN</a>
-                      <a class="dropdown-item" href="#">ABN</a>
-                      <a class="dropdown-item" href="#">ACT</a>
+                  <div class="col-12 jumbotron bg-transparent topText">
+                    <div class="text-center">
+                      <h3>Currency Converter</h3>
                     </div>
                 </div>
-                    <form class="col-11 h-100 mx-auto">
-                        <input class="w-100 h-75" type="text" name="currency-field" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00">
-                    </form>
+                
+
+                <div class="col-12 d-flex flex-nowrap">
+                          <div class="col-6 CurrVald">
+                            <div class="col-10 mx-auto justify-content-center dropdown">
+                                <button class="col-12 btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Country
+                                </button>
+                                <div class="dropdown-menu">
+                                  
+                                  <a class="dropdown-item" href="#">AKN</a>
+                                  <a class="dropdown-item" href="#">ABN</a>
+                                  <a class="dropdown-item" href="#">ACT</a>
+                                </div>
+                            </div>
+                                <form class="col-12 h-100 mx-auto">
+                                    <input class="w-100 h-75" type="text" name="currency-field" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00">
+                                </form>
+                          </div>
+
+                          <div class="col-6 CurrVald">
+                            <div class="col-10 mx-auto justify-content-center dropdown">
+                              <button class="col-12 btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Country
+                              </button>
+                              <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">AKN</a>
+                                <a class="dropdown-item" href="#">ABN</a>
+                                <a class="dropdown-item" href="#">ACT</a>
+                              </div>
+                          </div>
+                              <form class="h-100 mx-auto">
+                                  <input class="col-12 w-100 h-75" type="text" name="currency-field" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00">
+                              </form>
+                          </div>
+                </div>
+
+                <button type="button" class="btn btn-default" style="margin-top:40px">Default</button>
+            </div>
+
+            <!--cashflow day-->
+            <div class="col-12 flowday">
+              <div class="jumbotron bg-transparent topText">
+                <div class="text-center">
+                  <h3>Cashflow</h3>    
+                  <p>(Day)</p>
               </div>
+            </div>
+              <div id="index-flowday" style="height:300px"></div>
+          </div>
 
-              <div class="col-6 CurrVald">
-                <div class="col-3 mx-auto justify-content-center dropdown">
-                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Country
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">AKN</a>
-                    <a class="dropdown-item" href="#">ABN</a>
-                    <a class="dropdown-item" href="#">ACT</a>
-                  </div>
-              </div>
-                  <form class="h-100 mx-auto">
-                      <input class="col-11 w-100 h-75" type="text" name="currency-field" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00">
-                  </form>
-              </div>
-        </div>
+            <!--cashflow month-->
+           <div class="col-12 flowmonth">
+              <div class="jumbotron bg-transparent topText">
+                <div class="text-center">
+                  <h3>Cashflow</h3>    
+                  <p>(month)</p>
+                </div>
+            </div>
+              <div id="index-flowmonth" style="height:300px"></div>
+          </div>
 
-
-        </div>
-
-
-
+          <div>
+            <div class="jumbotron bg-transparent topText">
+              <div class="text-center">
+                <h3>Business News</h3>
+            </div>
+          </div>
 
 
           
     </div>
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <div id="chart_div"></div>
+
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
         <script src="script.js"></script>
-        
 </body>
 </html>
 
