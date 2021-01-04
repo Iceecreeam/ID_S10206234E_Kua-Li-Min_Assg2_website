@@ -1,4 +1,4 @@
-body, .index-tiles>div>.topText, .conButt, .pItem{
+body, .index-tiles>div>.topText, .conButt{
     background-color: #cccccc;
     font-family: 'Titillium Web', sans-serif;
     letter-spacing: 0.2vw;
@@ -99,9 +99,7 @@ h3{
     height:60px;
     background-color:#aaaaaa;
     border-radius:10px;
-    text-align: left;
-}
-.pItem{
+    font-size: 2vw;
 }
 
 /*amount spent / purchase quantity*/
@@ -109,7 +107,7 @@ span.col-10.ml-4{
     font-size: 1.6vw;
 }
 
-span.p-0{
+.index-amountSpentWallet > span.p-0, .index-purchaseQtyWallet > span.p-0{
     line-height: 1vw;
     margin-bottom: 5%;
 }
@@ -128,6 +126,12 @@ button.dropdown-toggle{
     max-height: 15vw;
 }
 
+/*news*/
+.tit{
+    margin: auto 0;
+    line-height: 2.7vw;
+    font-size: 2vw
+}
 
 
 @media only screen and (max-width: 900px) {
@@ -195,7 +199,7 @@ button.dropdown-toggle{
         margin: 17% 0;
         height: 60vw
     }
-    .bar>span{
+    .barTxt{
         transform: rotate(90deg);
     }
 
@@ -205,8 +209,8 @@ button.dropdown-toggle{
         font-size: 4vw;
     }
 
-    span.p-0{
-        line-height: 3.7vw;
+    .index-amountSpentWallet > span.p-0, .index-purchaseQtyWallet > span.p-0{
+        line-height: 4.5vw;
         margin-bottom: 10%;
         font-size: 6vw;
     }
@@ -221,6 +225,16 @@ button.dropdown-toggle{
         font-size: 4vw;
         overflow-y: scroll;
         max-height: 40vw;
+    }
+
+    /*news*/
+    .tit{
+        margin: 0;
+        bottom:0;
+        line-height: 5.6vw;
+        font-size: 3.5vw;
+        margin-bottom: 3%;
+
     }
 
 
@@ -282,5 +296,13 @@ button.dropdown-toggle{
     /*Currency Converter*/
     button.dropdown-toggle{
         font-size: 6vw
+    }
+
+    /*news*/
+    .sou{
+        font-size:4.5vw
+    }
+    .tit{
+        font-size: 4vw
     }
 }
