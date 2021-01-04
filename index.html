@@ -42,54 +42,55 @@
         </div>
 
         <!--wallet selection-->
-        <div class="col-md-11 col-12 text-center index-wallet-section"><br>    
+        <div class="col-md-11 col-12 py-2 text-center index-wallet-section"><br>    
             <h2>Wallets</h2>
             <div class="row col-12 mx-auto d-flex-wrap index-wallet-container"><br>
                   <div class="col-md-3 col-sm-4 col-6 index-wall">
                     <div class="panel">
                       <div class="panel-body"><img src="https://placehold.it/150x150?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                      <p class="panel-footer">Wallet Name</p>
+                      <p class="panel-footer">Food</p>
                     </div>
                   </div>
                   <div class="col-md-3 col-sm-4 col-6 index-wall"> 
                     <div class="panel">
                       <div class="panel-body"><img src="https://placehold.it/150x150?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                      <p class="panel-footer">Wallet Name</p>
+                      <p class="panel-footer">Recreation</p>
                     </div>
                   </div> 
                   <div class="col-md-3 col-sm-4 col-6 index-wall"> 
                     <div class="panel">
                       <div class="panel-body"><img src="https://placehold.it/150x150?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                      <p class="panel-footer">Wallet Name</p>
+                      <p class="panel-footer">Transport</p>
                     </div>
                   </div>
                   <div class="col-md-3 col-sm-4 col-6 index-wall"> 
                     <div class="panel">
                       <div class="panel-body"><img src="https://placehold.it/150x150?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                      <p class="panel-footer">Wallet Name</p>
+                      <p class="panel-footer">Others</p>
                     </div>
                   </div>
             </div>
-            <div class="mx-auto plus-button" id="wallet"><p class="mx-auto">+</p></div>
         </div>
+
+        
 
         <!--information tiles-->
         <div class="col-12 index-tiles">
 
 
             <!--amount spent-->
-            <div class="col-12 amountSpent">
+            <div class="col-12 m-0 amountSpent">
                 <div class="jumbotron bg-transparent topText">
                   <div class="text-center">
                     <h3>$$$$</h3>    
                     <p>spent this month</p>
                   </div>
               </div>
-              <div>
-                <div class="progress" style="height:30px;margin:0 auto">
-                  <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">money</div>
-                  <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                  <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="d-flex">
+                <div class="col-11 p-0 mx-auto progress">
+                  <div class="progress-bar bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"><span>pofn n</span></div>
+                  <div class="progress-bar bg-success bar" role="progressbar" style="width: 15%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><span>p nd gn </span></div>
+                  <div class="progress-bar bg-info bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><span>pfjsnd</span></div>
                 </div>
               </div>
             </div>
@@ -101,7 +102,7 @@
                   <h3>Biggest Purchase</h3>
                 </div>
             </div>
-            <div class="w-75 d-flex justify-content-between index-item" style="margin:0 auto">
+            <div class="col-10 col-sm-8 p-0 d-flex justify-content-between index-item" style="margin:0 auto">
               <span>item item </span>
               <span class="value">$$$$</span>
             </div>
@@ -114,16 +115,15 @@
                   <h3>Top Wallets Used</h3>
                 </div>
             </div>
-              <div class="w-75 d-flex flex-wrap index-amountSpentWallet" style="margin:0 auto">
-                <div class="col-7 ml-5">Amount Spent</div>
-                <span class="col-6">item item </span>
-                <span class="col-6 text-right value">$$$$</span>
+              <div class="col-10 col-sm-8 p-0 d-flex flex-wrap index-amountSpentWallet" style="margin:0 auto">
+                <span class="col-10 ml-4">Amount Spent</span>
+                <span class="col-8 p-0">item item </span>
+                <span class="col-4 p-0 text-right value">$$$$</span>
               </div>
-            <br>
-              <div class="w-75 d-flex flex-wrap index-purchaseQtyWallet" style="margin:0 auto">
-                <div class="col-7 ml-5">Purchase Quantity</div>
-                <span class="col-6">item item </span>
-                <span class="col-6 text-right value">$$$$</span>
+              <div class="col-10 col-sm-8 p-0 d-flex flex-wrap index-purchaseQtyWallet" style="margin:0 auto">
+                <span class="col-10 ml-4">Purchase Quantity</span>
+                <span class="col-8 p-0">item item </span>
+                <span class="col-4 p-0 text-right value">$$$$</span>
               </div>
             </div>
 
@@ -137,75 +137,94 @@
                 </div>
                 
 
-                <div class="col-12 d-flex flex-nowrap">
-                          <div class="col-6 CurrVald">
-                            <div class="col-10 mx-auto justify-content-center dropdown">
+                <div class="col-12 p-0 d-flex flex-wrap justify-content-center">
+                  
+                          <div class="col-12 col-sm-10 my-2 CurrVald">
+                            <div class="col-10 mx-auto justify-content-center dropup">
                                 <button class="col-12 btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Country
+                                  AKN
                                 </button>
-                                <div class="dropdown-menu">
+                                <div class="col-10 col-sm-11 dropdown-menu CurDrop">
                                   
                                   <a class="dropdown-item" href="#">AKN</a>
                                   <a class="dropdown-item" href="#">ABN</a>
                                   <a class="dropdown-item" href="#">ACT</a>
+                                  <a class="dropdown-item" href="#">AKN</a>
+                                  <a class="dropdown-item" href="#">ABN</a>
+                                  <a class="dropdown-item" href="#">ACT</a>
+                                  <a class="dropdown-item" href="#">AKN</a>
+                                  <a class="dropdown-item" href="#">ABN</a>
+                                  <a class="dropdown-item" href="#">ACT</a>
+                                  <a class="dropdown-item" href="#">AKN</a>
+                                  <a class="dropdown-item" href="#">ABN</a>
+                                  <a class="dropdown-item" href="#">ACT</a>
+                                  <a class="dropdown-item" href="#">AKN</a>
                                 </div>
                             </div>
-                                <form class="col-12 h-100 mx-auto">
-                                    <input class="w-100 h-75" type="text" name="currency-field" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00">
+                                <form class="col-12 h-50 mx-auto">
+                                    <input class="col-12 w-100 h-100" type="text" name="currency-field" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00">
                                 </form>
                           </div>
 
-                          <div class="col-6 CurrVald">
-                            <div class="col-10 mx-auto justify-content-center dropdown">
+                          <div class="col-12 col-sm-10 my-2 CurrVald">
+                            <div class="col-10 mx-auto justify-content-center dropup">
                               <button class="col-12 btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Country
                               </button>
-                              <div class="dropdown-menu">
+                              <div class="col-10 col-sm-11 dropdown-menu CurDrop">
+                                <a class="dropdown-item" href="#">AKN</a>
+                                <a class="dropdown-item" href="#">ABN</a>
+                                <a class="dropdown-item" href="#">ACT</a>
+                                <a class="dropdown-item" href="#">AKN</a>
+                                <a class="dropdown-item" href="#">ABN</a>
+                                <a class="dropdown-item" href="#">ACT</a>
+                                <a class="dropdown-item" href="#">AKN</a>
+                                <a class="dropdown-item" href="#">ABN</a>
+                                <a class="dropdown-item" href="#">ACT</a>
+                                <a class="dropdown-item" href="#">AKN</a>
+                                <a class="dropdown-item" href="#">ABN</a>
+                                <a class="dropdown-item" href="#">ACT</a>
                                 <a class="dropdown-item" href="#">AKN</a>
                                 <a class="dropdown-item" href="#">ABN</a>
                                 <a class="dropdown-item" href="#">ACT</a>
                               </div>
                           </div>
-                              <form class="h-100 mx-auto">
-                                  <input class="col-12 w-100 h-75" type="text" name="currency-field" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00">
+                              <form class="col-12 h-50 mx-auto">
+                                  <input class="col-12 w-100 h-100" type="text" name="currency-field" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00">
                               </form>
                           </div>
                 </div>
 
-                <button type="button" class="btn btn-default" style="margin-top:40px">Default</button>
+                <button type="button" class="btn col-4 col-sm-3 h-100 mt-4 mt-lg-5 btn-default conButt" >Convert</button>
             </div>
 
-            <!--cashflow day-->
-            <div class="col-12 flowday">
+            <!--cashflow-->
+            <div class="col-12 colflow">
               <div class="jumbotron bg-transparent topText">
                 <div class="text-center">
                   <h3>Cashflow</h3>    
-                  <p>(Day)</p>
+                  <p>Were you money conscious this month?</p>
               </div>
             </div>
-              <div id="index-flowday" style="height:300px"></div>
+              <div id="index-flowday" style="height:410px"></div>
           </div>
 
-            <!--cashflow month-->
-           <div class="col-12 flowmonth">
-               <div class="jumbotron bg-transparent topText">
-                  <div class="text-center">
-                    <h3>Cashflow</h3>    
-                    <p>(month)</p>
-                  </div>
-              </div>
-              <div id="index-flowmonth" style="height:300px"></div>
-          </div>
-
+          
+            <!---->
+          <div class="col-12 my-5 news">
             <div class="jumbotron bg-transparent topText">
               <div class="text-center">
                 <h3>Business News</h3>
             </div>
           </div>
+         </div>
 
-
-          
     </div>
+
+
+    
+    <div class="plus-button"><p class="mx-auto h-100 plus">+</p></div>     
+
 
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <div id="chart_div"></div>

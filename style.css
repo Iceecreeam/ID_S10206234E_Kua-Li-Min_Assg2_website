@@ -1,20 +1,20 @@
-body{
+body, .index-tiles>div>.topText, .conButt, .pItem{
     background-color: #cccccc;
     font-family: 'Titillium Web', sans-serif;
     letter-spacing: 0.2vw;
+    font-size: 2vw;
+    padding: 0;
+    margin: 0;
 }
 
 
 /*set font for headers and remove padding from bootstrap*/
-.index-tiles>div>.topText, h1, h2, h3, h4{
+h1, h2, h3, h4{
     font-family: 'Dosis', sans-serif;
     letter-spacing: 0.35vw;
-    padding: 0;
+    font-size: 7vw;
     margin: 0;
-    font-size: 5vw
 }
-
-
 
 
 /*'DAILY EXPENSES' Month*/
@@ -54,6 +54,7 @@ p.panel-footer{
 
 /*add buttons*/
 .plus-button{
+    font-family: 'Titillium Web', sans-serif;
     height: 5.5vw;
     width: 5.5vw;
     font-size: 9.9vw;
@@ -61,13 +62,18 @@ p.panel-footer{
     text-align: center;
     vertical-align: middle;
     border-radius: 50%;
-    background-color: #cccccc;
+    background-color: #ababab;
     color: #ebebeb;
+    position:fixed;
+    margin-right: 3vw;
+    margin-bottom: 2vw;
+    bottom:0;
+    right:0;
 }
 
 
 
-
+/*tiles*/
 .index-tiles{
     column-count: 2;
     column-gap: 6%;
@@ -79,16 +85,68 @@ p.panel-footer{
     border-radius: 15px;
     background-color: #ebebeb;
     margin-top: 6%;
+    padding: 3% 0;
     break-inside: avoid-column; /*prevents each tile from breaking https://stackoverflow.com/questions/7785374/how-to-prevent-column-break-within-an-element*/
+}
+
+h3{
+    letter-spacing: 0.4vw;
+    font-size: 3.5vw;
+}
+
+/*progress bar*/
+.progress{
+    height:60px;
+    background-color:#aaaaaa;
+    border-radius:10px;
+    text-align: left;
+}
+.pItem{
+}
+
+/*amount spent / purchase quantity*/
+span.col-10.ml-4{
+    font-size: 1.6vw;
+}
+
+span.p-0{
+    line-height: 1vw;
+    margin-bottom: 5%;
 }
 
 
 
+/*Currency Converter*/
+button.dropdown-toggle{
+    font-size: 2vw;
+    margin-top: 2%;
+}
+
+.CurDrop{
+    font-size: 1.5vw;
+    overflow-y: scroll;
+    max-height: 15vw;
+}
+
 
 
 @media only screen and (max-width: 900px) {
-    /*'DAILY EXPENSES' Month*/
+    body, .index-tiles>div>.topText, .conButt{
+        letter-spacing: 0.25vw;
+        font-size: 4.5vw;
+    }
+    
+    /*set font for headers*/
+    h1, h2, h3, h4, .index-tiles>div>div>div>h3{
+        letter-spacing: 0.35vw;
+        font-size: 8.5vw;
+    }
 
+
+
+
+
+    /*'DAILY EXPENSES' Month*/
     #topText{
         padding-bottom: 0.1%;
     }
@@ -108,17 +166,13 @@ p.panel-footer{
         column-count: 1;
     }
 
-    h2{
-        font-size: 8vw;
-        margin-bottom: 1%;
-    }
 
     /*wallet selection*/
     .index-wallet-container>div{
-        margin-bottom:1%;
+        margin-top:1%;
     }
     p.panel-footer{
-        font-size: 2.5vw;
+        font-size: 2.7vw;
         margin: 0.8% 0;
     }
 
@@ -131,11 +185,78 @@ p.panel-footer{
         line-height: 6.4vw;
         margin-bottom: 1%;
     }
+
+    /*tiles*/
+
+    /*progress bar*/
+
+    .progress{
+        transform: rotate(270deg);
+        margin: 17% 0;
+        height: 60vw
+    }
+    .bar>span{
+        transform: rotate(90deg);
+    }
+
+
+    /*amount spent / purchase quantity*/
+    span.col-10.ml-4{
+        font-size: 4vw;
+    }
+
+    span.p-0{
+        line-height: 3.7vw;
+        margin-bottom: 10%;
+        font-size: 6vw;
+    }
+
+    /*Currency Converter*/
+    button.dropdown-toggle{
+        font-size: 4.5vw;
+        letter-spacing: 0.5vw;
+    }
+
+    .CurDrop{
+        font-size: 4vw;
+        overflow-y: scroll;
+        max-height: 40vw;
+    }
+
+
 }
 
 @media only screen and (max-width: 575px) {
+    body, .index-tiles>div>.topText, .conButt{
+        letter-spacing: 0.2vw;
+        font-size: 6vw;
+    }
+    
+    /*set font for headers*/
+    h1, h2, h3, h4{
+        letter-spacing: 0.3vw;
+        font-size: 13.5vw;
+        line-height: 12vw;
+    }
+
+
+    /*'DAILY EXPENSES' Month*/
+    #topText > div > h1{
+        letter-spacing: 3vw;
+        font-size: 15vw;
+        padding-top: 1.5vw;
+        line-height: 14vw;
+    }
+    #topText > div > p{
+        letter-spacing: 0.5vw;
+        font-size: 6vw;
+        line-height: 5vw;
+    }
+
+
+    /*wallet selection*/
     .index-wallet-container>div{
-        margin-bottom:3%;
+        margin-top:4%;
     }
     p.panel-footer{
         font-size: 4.5vw;
@@ -149,5 +270,17 @@ p.panel-footer{
         width: 16.5vw;
         font-size: 29.7vw;
         line-height: 9.6vw;
+    }
+
+
+    /*change border radius of tiles*/
+    .index-tiles > div{
+        border-radius: 9px;
+    }
+
+
+    /*Currency Converter*/
+    button.dropdown-toggle{
+        font-size: 6vw
     }
 }
