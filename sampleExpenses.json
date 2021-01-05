@@ -1,0 +1,59 @@
+{
+    "Wallet":
+    {
+        "Food":{
+            "budget":42,
+            "icon":"images/wallet-icon/044-eat.png"
+        },
+        "Transport":{
+            "budget":42,
+            "icon":"images/wallet-icon/053-car.png"
+        },
+        "Recreation":{
+            "budget":42,
+            "icon":"images/wallet-icon/002-cloudy.png"
+        },
+        "Others":{
+            "budget":42,
+            "icon":"images/wallet-icon/017-eat.png"
+        }
+    },
+    "Trans": 
+    [
+        {
+            "wall": "Recreation", 
+            "name": "Name",
+            "amt": 19.14,    
+            "desc": "big purchase", 
+            "date":[1,1,21]
+        },
+        {
+            "wall": "Recreation",
+            "name": "Name",
+            "amt": 19.14,
+            "desc": "big purchase",
+            "date":[1,1,21]
+        },
+        {
+            "wall": "Recreation",
+            "name": "Name",
+            "amt": 19.14,
+            "desc": "big purchase",
+            "date":[3,1,21]
+        },
+        {
+            "wall": "Recreation",
+            "name": "Name",
+            "amt": 19.14,
+            "desc": "big purchase",
+            "date":[4,1,21]
+        },
+        {
+            "wall": "Recreation",
+            "name": "Name",
+            "amt": 19.14,
+            "desc": "big purchase",
+            "date":[5,1,21]
+        }
+    ]
+}
