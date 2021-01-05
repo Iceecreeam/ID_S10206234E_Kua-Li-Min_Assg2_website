@@ -42,12 +42,17 @@ h1, h2, h3, h4{
     margin: 3.5% auto;
     padding-bottom: 0.3%;
     background-color: #e5e5e5;
-    line-height: 35px;
+}
+.index-wallet-section>h2{
+    font-size: 350%;
+    margin-bottom: 2.8%;
+    line-height: 50%;
 }
 p.panel-footer{
     font-size: 1.9vw;
     font-weight: bold;
-    margin: 1.5% 0;
+    margin: 2% 0;
+    line-height: 40px;
 }
 
 
@@ -172,6 +177,11 @@ button.dropdown-toggle{
 
 
     /*wallet selection*/
+    .index-wallet-section>h2{
+        font-size: 11.2vw;
+        margin-bottom: 5%;
+        line-height: 20%;
+    }
     .index-wallet-container>div{
         margin-top:1%;
     }
@@ -270,6 +280,11 @@ button.dropdown-toggle{
 
 
     /*wallet selection*/
+    .index-wallet-section>h2{
+        font-size: 13.5vw;
+        margin-bottom: 5%;
+        line-height: 14%;
+    }
     .index-wallet-container>div{
         margin-top:4%;
     }
