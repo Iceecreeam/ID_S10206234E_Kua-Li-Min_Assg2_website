@@ -707,7 +707,7 @@ function dataInt() {
 
       if (Math.floor(Math.random() * 10) > 7){ /*change some of the months to the month before to be realistic*/
           month -= 1;
-          if (month <= 0){ /*switch months less than ot equal 0 to the year before*/
+          if (month <= 0){ /*switch months less than or equal 0 to the year before*/
               month += 12
               year -= 1
           }
@@ -728,9 +728,9 @@ function dataInt() {
 
 
 /*get data from local storage and set variables*/
-var data = JSON.parse(window.localStorage.getItem("data"))
-wall = data['Wallet']
-trans = data['Trans']
+var wData = JSON.parse(window.localStorage.getItem("data"))
+wall = wData['Wallet']
+trans = wData['Trans']
 
 /*change month in #topText*/
 var mnthStr = {
@@ -766,7 +766,48 @@ function wallInt() {
 
 
 
+/*business news*/
+    /*https://stackoverflow.com/questions/61951713/problem-with-cors-policy-when-making-a-request-to-https-newsapi-org*/
+    const proxyUrl = "https://cors-anywhere.herokuapp.com/"
+    const url = `${proxyUrl}https://www.channelnewsasia.com/rssfeeds/8395954`;
+    const request = new Request(url);
 
+    /*https://css-tricks.com/how-to-fetch-and-parse-rss-feeds-in-javascript/
+    fetch news*/
+    fetch(url)
+    .then(response => response.text())
+    .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+    .then(function(data){    
+    var channel = data.querySelectorAll("channel")[0]
+    $("#update").text(channel.querySelectorAll("lastBuildDate")[0].innerHTML)
+    console.log('update time')
+console.log('a')
+
+    
+
+
+
+    var arti = channel.querySelectorAll("item")
+    for (i = 0; i < 4; i++){
+       console.log(arti[i])
+       var tit = arti[i].querySelectorAll("title")[0].innerHTML
+       var tim = arti[i].querySelectorAll("pubDate")[0].innerHTML
+       var pic = arti[i].querySelectorAll("media:thumbnail")[0].innerHTML
+       var lin = arti[i].querySelectorAll("link")[0].innerHTML
+       console.log(pic)
+       console.log(lin)
+
+       /*   <button class="col-12 d-flex flex-nowrap my-5 my-sm-2 mr-3 px-4 px-sm-5 border-0 rounded text-left bg-transparent art">
+                <span class="col-9 p-0 headline">
+                  <span class="col-12 d-block m-0 sou"> <b> | </b></span>
+                  <span class="col-12 p-0 pb-2 tit">2 family COVID-19 clusters a asobering remindera about</span>
+                </span>
+                <img class="col-3 p-0 ml-1 rounded-circle photo" src="https://placehold.it/150x150?text=IMAGE" alt="photo">
+            </button>*/
+
+         
+    }
+   })
 
 
 

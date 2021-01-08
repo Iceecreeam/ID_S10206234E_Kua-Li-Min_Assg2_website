@@ -239,7 +239,7 @@ button.dropdown-toggle{
     }
 
     /*news*/
-    .tit{
+    .tit, .upTxt{
         margin: 0;
         bottom:0;
         line-height: 5.6vw;
@@ -318,7 +318,7 @@ button.dropdown-toggle{
     .sou{
         font-size:4.5vw
     }
-    .tit{
+    .tit, .upTxt{
         font-size: 4vw
     }
 }
