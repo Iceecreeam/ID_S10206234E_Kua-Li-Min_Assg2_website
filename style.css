@@ -12,9 +12,9 @@ body,
 /*remove focus outline*/
 input:focus, button:focus, .btn:focus{
 	outline: none;
-	color: #aaaaaa;
+	color: #000000;
 	box-shadow: none;
-    filter: invert(60%);
+    filter: invert(70%);
 }
 
 /*set font for headers and remove padding from bootstrap*/

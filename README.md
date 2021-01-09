@@ -11,3 +11,4 @@ https://www.tutorialrepublic.com/faq/how-to-bind-click-event-to-dynamically-adde
 https://www.flaticon.com/free-icon/draw_61456
 https://www.flaticon.com/packs/daily-routine-objects-actions
 https://www.json-generator.com/
+https://secure.mas.gov.sg/api/APIDescPage.aspx?resource_id=95932927-c8bc-4e7a-b484-68a66a24edfe

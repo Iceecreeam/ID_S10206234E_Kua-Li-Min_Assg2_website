@@ -765,112 +765,38 @@ function wallInt() {
 }
 
 
-var news = []
-/*business news*/
-busInt()
-function busInt() {
-         /*https://stackoverflow.com/questions/61951713/problem-with-cors-policy-when-making-a-request-to-https-newsapi-org*/
-         const proxyUrl = "https://cors-anywhere.herokuapp.com/"
-         const url = `${proxyUrl}https://www.channelnewsasia.com/rssfeeds/8395954`;
-         const request = new Request(url);
-         
-         /*https://css-tricks.com/how-to-fetch-and-parse-rss-feeds-in-javascript/
-         fetch news*/
-         fetch(url)
-         .then(response => response.text())
-         .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-         .then(function(data){  
-         var channel = data.querySelectorAll("channel")[0]
-         $("#update").text(channel.querySelectorAll("lastBuildDate")[0].innerHTML) /*change updated date*/
 
-            
-         /*update articles*/
-         $(".news>button").remove(); /*clear div*/
-         var arti = channel.querySelectorAll("item")
-         var rand = Math.floor(Math.random() * 3) + 1 /*randomise articles*/
-         var rand1 = Math.floor(Math.random() * 5) + 1 /*randomise articles*/
-         for (p = 0; p < 4; p++){
-            /*get relevant variables*/
-            var tit = arti[(p + rand1) * rand].querySelectorAll("title")[0].innerHTML
-            var tim = new Date().getHours() - Number(arti[(p + rand1) * rand].querySelectorAll("pubDate")[0].innerHTML.slice(17,19))
-            var pic = String(arti[(p + rand1) * rand].querySelectorAll("thumbnail")[0]['attributes'][2]['value'])
-            var lin = arti[(p + rand1) * rand].querySelectorAll("link")[0].innerHTML
+/*INFORMATION TILES*/
 
 
-            /*shorten title if needed*/
-            if (tit.length >= 70){
-               tit = tit.slice(0, 67)
-               tit += "..."
-            }            
-            
-            
-            /*modify time if needed*/
-            var suff = " hour"
-            if (tim > 1){
-               suff += "s"
+/*currency converter tile*/
+
+var curr = [] /*currency rates*/
+/* fetch currency rates*/
+currInt()
+function currInt() {
+      fetch("https://eservices.mas.gov.sg/api/action/datastore/search.json?resource_id=10eafb90-11a2-4fbd-b7a7-ac15a42d60b6&limit=1&sort=end_of_month desc")
+         .then(response => response.json())
+         .then(data => data['result']['records'][0])
+         .then(function(data){
+
+         /*modify json for use*/
+         delete data['timestamp']
+         delete data['preliminary']
+         delete data['end_of_month']
+         for (i in data){
+            data[i] = Number(data[i])
+            if (i.includes('100')){
+               data[i] *= 100
             }
-            if (tim < 0){
-               var month=  arti[(p + rand1) * rand].querySelectorAll("pubDate")[0].innerHTML.slice(8, 11)
-               var year =  arti[(p + rand1) * rand].querySelectorAll("pubDate")[0].innerHTML.slice(12,16)
-               var day = arti[(p + rand1) * rand].querySelectorAll("pubDate")[0].innerHTML.slice(5,7)
-               
-
-               for (i in mnthStr){
-                  if (mnthStr[i].includes(month)){
-                     month = i
-                  }
-               }
-               tim = Math.floor((new Date() - new Date(month + "/" + day + "/" + year))/ (1000 * 3600 * 24))
-               suff = " day"
-               if (tim > 1){
-                  suff += "s"
-               } 
-            }
-
-            
-
-            if ((tim + suff) == "0 hour"){
-               tim = "This Just"
-               suff = " In!"
-
-            }
-            else{
-               suff += " ago"
-            }
-
-               
-            /*add title and link to news list*/
-            news.push([tit, lin])
-            /*create articles*/
-            $( '<button class="col-12 d-flex flex-nowrap my-5 my-sm-3 mr-3 px-4 px-sm-5 border-0 h-100 rounded text-left bg-transparent art"><span class="col-8 col-sm-9 p-0 headline"><span class="col-12 d-block m-0 sou">'
-            + tim + suff + '<b> | </b></span><span class="col-12 p-0 pb-2 tit">'
-            + tit + '</span></span><span class="col-4 d-flex col-sm-3 p-0 h-100 w-100 ml-1 justify-content-center"><img src="'
-            + pic + '" alt="photo"></span></button>' ).insertBefore(".upTxt")
-               
-            }
-         
-
-      })
+            var country = i.slice(0, 3).toUpperCase()
+            curr.push([country, data[i]])
+            $(".CurDrop").append('<span class="dropdown-item dropCountry">'+country+'</span>');
+         }
+         })
 }
 
-/*if news article is clicked*/
-$(document).on("click", ".art" , function() { /*https://www.tutorialrepublic.com/faq/how-to-bind-click-event-to-dynamically-added-elements-in-jquery.php*/
-   console.log()
-   for (i = 0; i < news.length; i++){
-      if (news[i][0] == this.innerHTML.slice(this.innerHTML.indexOf('tit">') + 5, this.innerHTML.indexOf('</span></span><span')))
-      {
-         open(news[i][1], "blank_")
-         this.blur()
-         break
-      }
-   }
-})
-
-
-
-
-// Jquery Dependency
-
+/* format currency, here to function formatCurrency(input, blur) from https://codepen.io/559wade/pen/LRzEjj */
 $("input[data-type='currency']").on({
    keyup: function() {
      formatCurrency($(this));
@@ -879,9 +805,10 @@ $("input[data-type='currency']").on({
      formatCurrency($(this), "blur");
    }
 });
-
-
-/* normat currency, entire function from https://codepen.io/559wade/pen/LRzEjj */
+function formatNumber(n) {
+ // format number 1000000 to 1,234,567
+ return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+}
 function formatCurrency(input, blur) {
  // appends $ to value, validates decimal side
  // and puts cursor back in right position.
@@ -891,6 +818,7 @@ function formatCurrency(input, blur) {
  
  // don't validate empty input
  if (input_val === "") { return; }
+ 
  // original length
  var original_len = input_val.length;
 
@@ -948,6 +876,113 @@ function formatCurrency(input, blur) {
  input[0].setSelectionRange(caret_pos, caret_pos);
 }
 
+/*change innerhtml of drowpdown button to selected country*/
+$(document).on("click", ".dropCountry" , function() {
+   ($(this).parent().siblings("button")).text($(this).text())
+})
+
+
+
+
+var news = []
+/*business news*/
+busInt()
+function busInt() {
+         /*https://stackoverflow.com/questions/61951713/problem-with-cors-policy-when-making-a-request-to-https-newsapi-org*/
+         const proxyUrl = "https://cors-anywhere.herokuapp.com/"
+         const url = `${proxyUrl}https://www.channelnewsasia.com/rssfeeds/8395954`;
+         const request = new Request(url);
+         
+         /*https://css-tricks.com/how-to-fetch-and-parse-rss-feeds-in-javascript/
+         fetch news*/
+         fetch(url)
+         .then(response => response.text())
+         .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+         .then(function(data){  
+         var channel = data.querySelectorAll("channel")[0]
+         $("#update").text(channel.querySelectorAll("lastBuildDate")[0].innerHTML) /*change updated date*/
+
+            
+         /*update articles*/
+         $(".news>button").remove(); /*clear div*/
+         var arti = channel.querySelectorAll("item")
+         var rand = Math.floor(Math.random() * 5) + 1 /*randomise articles*/
+         var rand1 = Math.floor(Math.random() * 5) + 1 /*randomise articles*/
+         for (p = 0; p < 4; p++){
+            /*get relevant variables*/
+            var tit = arti[(p + rand1) * rand].querySelectorAll("title")[0].innerHTML
+            var tim = new Date().getHours() - Number(arti[(p + rand1) * rand].querySelectorAll("pubDate")[0].innerHTML.slice(17,19))
+            var pic = String(arti[(p + rand1) * rand].querySelectorAll("thumbnail")[0]['attributes'][2]['value'])
+            var lin = arti[(p + rand1) * rand].querySelectorAll("link")[0].innerHTML
+
+
+            /*shorten title if needed*/
+            if (tit.length >= 70){
+               tit = tit.slice(0, 67)
+               tit += "..."
+            }            
+            
+            
+            /*modify time if needed*/
+            var suff = " hour"
+            if (tim > 1){
+               suff += "s"
+            }
+            if (tim < 0){
+               var month=  arti[(p + rand1) * rand].querySelectorAll("pubDate")[0].innerHTML.slice(8, 11)
+               var year =  arti[(p + rand1) * rand].querySelectorAll("pubDate")[0].innerHTML.slice(12,16)
+               var day = arti[(p + rand1) * rand].querySelectorAll("pubDate")[0].innerHTML.slice(5,7)
+               
+
+               for (i in mnthStr){
+                  if (mnthStr[i].includes(month)){
+                     month = i
+                  }
+               }
+               tim = Math.floor((new Date() - new Date(month + "/" + day + "/" + year))/ (1000 * 3600 * 24))
+               suff = " day"
+               if (tim > 1){
+                  suff += "s"
+               } 
+            }
+
+            
+
+            if ((tim + suff) == "0 hour"){
+               tim = "This Just"
+               suff = " In! "
+
+            }
+            else{
+               suff += " ago"
+            }
+
+               
+            /*add title and link to news list*/
+            news.push([tit, lin])
+            /*create articles*/
+            $( '<button class="col-12 d-flex flex-nowrap my-5 my-sm-3 mr-3 px-4 px-sm-5 border-0 h-100 rounded text-left bg-transparent art"><span class="col-8 col-sm-9 p-0 headline"><span class="col-12 d-block m-0 sou">'
+            + tim + suff + '<b> | </b></span><span class="col-12 p-0 pb-2 tit">'
+            + tit + '</span></span><span class="col-4 d-flex col-sm-3 p-0 h-100 w-100 ml-1 justify-content-center"><img src="'
+            + pic + '" alt="photo"></span></button>' ).insertBefore(".upTxt")
+               
+            }
+         
+
+      })
+}
+/*if news article is clicked*/
+$(document).on("click", ".art" , function() { /*https://www.tutorialrepublic.com/faq/how-to-bind-click-event-to-dynamically-added-elements-in-jquery.php*/
+   console.log()
+   for (i = 0; i < news.length; i++){
+      if (news[i][0] == this.innerHTML.slice(this.innerHTML.indexOf('tit">') + 5, this.innerHTML.indexOf('</span></span><span')))
+      {
+         open(news[i][1], "blank_")
+         this.blur()
+         break
+      }
+   }
+})
 
 
 
@@ -995,4 +1030,6 @@ function initgraph() {
                 chart.draw(data, options);
               }
 }
+
+
 
