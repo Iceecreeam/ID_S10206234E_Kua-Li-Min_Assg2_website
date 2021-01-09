@@ -1,273 +1,234 @@
 <!DOCTYPE html>
-<html lang="en"> 
-    <head>
-    	<meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-
-        <title>Expenses</title>
-        <link rel="icon" href="images/wallet-icon/029-list.png">
-
-        <!-- Required meta tags -->
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        
-        <!-- Normalise CSS -->
-        <link rel="stylesheet" href="normalize.css">
-
-        <!-- CSS -->
-        <link rel="stylesheet" href="style.css">
-
-        <!--Fonts-->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-
-        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400&display=swap" rel="stylesheet">
-        <!--font-family: 'Titillium Web', sans-serif;-->
-        <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap" rel="stylesheet">
-        <!--font-family: 'Dosis', sans-serif;-->
-
-
-    </head>
-
-
-
-    <body>
-
-        <div class="jumbotron bg-default topText" id = "topText">
-            <div class="container text-center col-12">
-              <h1>EXPENSE TRACKER</h1>      
-              <p class="p-0">Month</p>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <title>Expenses</title>
+      <link rel="icon" href="images/wallet-icon/029-list.png">
+      <!-- Required meta tags -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+      <!-- Normalise CSS -->
+      <link rel="stylesheet" href="normalize.css">
+      <!-- CSS -->
+      <link rel="stylesheet" href="style.css">
+      <!--Fonts-->
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400&display=swap" rel="stylesheet">
+      <!--font-family: 'Titillium Web', sans-serif;-->
+      <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap" rel="stylesheet">
+      <!--font-family: 'Dosis', sans-serif;-->
+   </head>
+   <body>
+      <div class="jumbotron bg-default topText" id = "topText">
+         <div class="container text-center col-12">
+            <h1>EXPENSE TRACKER</h1>
+            <p class="p-0">Month</p>
+         </div>
+      </div>
+      <div class="bg-primary w-100 h-100 hello"></div>
+      <!--wallet selection-->
+      <div class="col-md-11 col-12 pb-2 text-center index-wallet-section">
+         <br>    
+         <h2 class="">Wallets</h2>
+         <div class="row col-12 mx-auto mb-3 d-flex-wrap index-wallet-container">
+            <br>
+            <div class="col-md-3 col-sm-4 col-6 index-wall">
+               <div class="panel">
+                  <div class="p-2 p-sm-3 p-lg-4 panel-body" style="background-color:#cccccc;border-radius:20px;"><img src="images/wallet-icon/017-tablet.png" class="img-responsive" style="width:100%;filter:invert(94%)" alt="Image"></div>
+                  <p class="panel-footer">Food</p>
+               </div>
             </div>
-        </div>
-
-        <div class="bg-primary w-100 h-100 hello"></div>
-
-        <!--wallet selection-->
-        <div class="col-md-11 col-12 pb-2 text-center index-wallet-section"><br>    
-            <h2 class="">Wallets</h2>
-            <div class="row col-12 mx-auto mb-3 d-flex-wrap index-wallet-container"><br>
-                  <div class="col-md-3 col-sm-4 col-6 index-wall">
-                    <div class="panel">
-                      <div class="p-2 p-sm-3 p-lg-4 panel-body" style="background-color:#cccccc;border-radius:20px;"><img src="images/wallet-icon/017-tablet.png" class="img-responsive" style="width:100%;filter:invert(94%)" alt="Image"></div>
-                      <p class="panel-footer">Food</p>
-                    </div>
-                  </div>
-                  <div class="col-md-3 col-sm-4 col-6 index-wall"> 
-                    <div class="panel">
-                      <div class="p-2 p-sm-3 p-lg-4 panel-body" style="background-color:#cccccc;border-radius:20px;"><img src="images/wallet-icon/001-working.png" class="img-responsive" style="width:100%;filter:invert(94%)" alt="Image"></div>
-                      <p class="panel-footer">Recreation</p>
-                    </div>
-                  </div> 
-                  <div class="col-md-3 col-sm-4 col-6 index-wall"> 
-                    <div class="panel">
-                      <div class="p-2 p-sm-3 p-lg-4 panel-body" style="background-color:#cccccc;border-radius:20px;"><img src="images/wallet-icon/001-working.png" class="img-responsive" style="width:100%;filter:invert(94%)" alt="Image"></div>
-                      <p class="panel-footer">Transport</p>
-                    </div>
-                  </div>
-                  <div class="col-md-3 col-sm-4 col-6 index-wall"> 
-                    <div class="panel">
-                      <div class="p-2 p-sm-3 p-lg-4 panel-body" style="background-color:#cccccc;border-radius:20px;"><img src="images/wallet-icon/001-working.png" class="img-responsive" style="width:100%;filter:invert(94%)" alt="Image"></div>
-                      <p class="panel-footer">Others</p>
-                    </div>
-                  </div>
+            <div class="col-md-3 col-sm-4 col-6 index-wall">
+               <div class="panel">
+                  <div class="p-2 p-sm-3 p-lg-4 panel-body" style="background-color:#cccccc;border-radius:20px;"><img src="images/wallet-icon/001-working.png" class="img-responsive" style="width:100%;filter:invert(94%)" alt="Image"></div>
+                  <p class="panel-footer">Recreation</p>
+               </div>
             </div>
-        </div>
-
-        
-
-        <!--information tiles-->
-        <div class="col-12 index-tiles">
-
-
-            <!--amount spent-->
-            <div class="col-12 m-0 amountSpent">
-                <div class="jumbotron bg-transparent topText">
-                  <div class="text-center">
-                    <h3>$$$$</h3>    
-                    <p>spent this month</p>
-                  </div>
-              </div>
-              <div class="d-flex">
-                <div class="col-11 p-0 mx-auto progress">
+            <div class="col-md-3 col-sm-4 col-6 index-wall">
+               <div class="panel">
+                  <div class="p-2 p-sm-3 p-lg-4 panel-body" style="background-color:#cccccc;border-radius:20px;"><img src="images/wallet-icon/001-working.png" class="img-responsive" style="width:100%;filter:invert(94%)" alt="Image"></div>
+                  <p class="panel-footer">Transport</p>
+               </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-6 index-wall">
+               <div class="panel">
+                  <div class="p-2 p-sm-3 p-lg-4 panel-body" style="background-color:#cccccc;border-radius:20px;"><img src="images/wallet-icon/001-working.png" class="img-responsive" style="width:100%;filter:invert(94%)" alt="Image"></div>
+                  <p class="panel-footer">Others</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!--information tiles-->
+      <div class="col-12 index-tiles">
+         <!--amount spent-->
+         <div class="col-12 m-0 amountSpent">
+            <div class="jumbotron bg-transparent topText">
+               <div class="text-center">
+                  <h3>$$$$</h3>
+                  <p>spent this month</p>
+               </div>
+            </div>
+            <div class="d-flex">
+               <div class="col-11 p-0 mx-auto progress">
                   <div class="progress-bar bar" role="progressbar" style="width: 19%" aria-valuemin="0" aria-valuemax="100"><span class="barTxt">pofn </span></div>
                   <div class="progress-bar bg-success bar" role="progressbar" style="width: 25%" aria-valuemin="0" aria-valuemax="100"><span class="barTxt">p nd gn </span></div>
                   <div class="progress-bar bg-info bar" role="progressbar" style="width: 22%" aria-valuemin="0" aria-valuemax="100"><span class="barTxt">pfjsnd</span></div>
                   <div class="progress-bar bg-danger bar" role="progressbar" style="width: 30%" aria-valuemin="0" aria-valuemax="100"><span class="barTxt">dbfhdb</span></div>
-                </div>
-              </div>
+               </div>
             </div>
-
-            <!--biggest purchase-->
-            <div class="col-12 BigPur">
-              <div class="jumbotron bg-transparent topText">
-                <div class="text-center">
+         </div>
+         <!--biggest purchase-->
+         <div class="col-12 BigPur">
+            <div class="jumbotron bg-transparent topText">
+               <div class="text-center">
                   <h3>Biggest Purchase</h3>
-                </div>
+               </div>
             </div>
             <div class="col-10 col-sm-8 p-0 d-flex justify-content-between index-item" style="margin:0 auto">
-              <span>item item </span>
-              <span class="value">$$$$</span>
+               <span>item item </span>
+               <span class="value">$$$$</span>
             </div>
-            </div>
-
-            <!--top wallet-->
-            <div class="col-12 topWallet">
-              <div class="jumbotron bg-transparent topText">
-                <div class="text-center">
-                  <h3>Top Wallets Used</h3>
-                </div>
-            </div>
-              <div class="col-10 col-sm-8 p-0 d-flex flex-wrap index-amountSpentWallet" style="margin:0 auto">
-                <span class="col-10 ml-4">Amount Spent</span>
-                <span class="col-8 p-0">item item </span>
-                <span class="col-4 p-0 text-right value">$$$$</span>
-              </div>
-              <div class="col-10 col-sm-8 p-0 d-flex flex-wrap index-purchaseQtyWallet" style="margin:0 auto">
-                <span class="col-10 ml-4">Purchase Quantity</span>
-                <span class="col-8 p-0">item item </span>
-                <span class="col-4 p-0 text-right value">####</span>
-              </div>
-            </div>
-
-            <!--currency converter-->
-            <div class="col-12 d-flex flex-wrap justify-content-center CurrConv">
-
-                  <div class="col-12 jumbotron bg-transparent topText">
-                    <div class="text-center">
-                      <h3>Currency Converter</h3>
-                    </div>
-                </div>
-                
-
-                <div class="col-12 p-0 d-flex flex-wrap justify-content-center">
-                  
-                          <div class="col-12 col-sm-10 my-2 CurrVald">
-                            <div class="col-10 mx-auto justify-content-center dropup">
-                                <button class="col-12 btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  AKN
-                                </button>
-                                <div class="col-10 col-sm-11 dropdown-menu CurDrop">
-                                  
-                                  <a class="dropdown-item" href="#">AKN</a>
-                                  <a class="dropdown-item" href="#">ABN</a>
-                                  <a class="dropdown-item" href="#">ACT</a>
-                                  <a class="dropdown-item" href="#">AKN</a>
-                                  <a class="dropdown-item" href="#">ABN</a>
-                                  <a class="dropdown-item" href="#">ACT</a>
-                                  <a class="dropdown-item" href="#">AKN</a>
-                                  <a class="dropdown-item" href="#">ABN</a>
-                                  <a class="dropdown-item" href="#">ACT</a>
-                                  <a class="dropdown-item" href="#">AKN</a>
-                                  <a class="dropdown-item" href="#">ABN</a>
-                                  <a class="dropdown-item" href="#">ACT</a>
-                                  <a class="dropdown-item" href="#">AKN</a>
-                                </div>
-                            </div>
-                                <form class="col-12 h-50 mx-auto">
-                                    <input class="col-12 w-100 h-100" type="text" name="currency-field" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00">
-                                </form>
-                          </div>
-
-                          <div class="col-12 col-sm-10 my-2 CurrVald">
-                            <div class="col-10 mx-auto justify-content-center dropup">
-                              <button class="col-12 btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Country
-                              </button>
-                              <div class="col-10 col-sm-11 dropdown-menu CurDrop">
-                                <a class="dropdown-item" href="#">AKN</a>
-                                <a class="dropdown-item" href="#">ABN</a>
-                                <a class="dropdown-item" href="#">ACT</a>
-                                <a class="dropdown-item" href="#">AKN</a>
-                                <a class="dropdown-item" href="#">ABN</a>
-                                <a class="dropdown-item" href="#">ACT</a>
-                                <a class="dropdown-item" href="#">AKN</a>
-                                <a class="dropdown-item" href="#">ABN</a>
-                                <a class="dropdown-item" href="#">ACT</a>
-                                <a class="dropdown-item" href="#">AKN</a>
-                                <a class="dropdown-item" href="#">ABN</a>
-                                <a class="dropdown-item" href="#">ACT</a>
-                                <a class="dropdown-item" href="#">AKN</a>
-                                <a class="dropdown-item" href="#">ABN</a>
-                                <a class="dropdown-item" href="#">ACT</a>
-                              </div>
-                          </div>
-                              <form class="col-12 h-50 mx-auto">
-                                  <input class="col-12 w-100 h-100" type="text" name="currency-field" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00">
-                              </form>
-                          </div>
-                </div>
-
-                <button type="button" class="btn col-4 col-sm-3 h-100 mt-4 mt-lg-5 btn-default conButt"><b>Convert</b></button>
-            </div>
-
-            <!--cashflow-->
-            <div class="col-12 colflow">
-              <div class="jumbotron bg-transparent topText">
-                <div class="text-center">
-                  <h3>Cashflow</h3>    
-                  <p>Were you money conscious this month?</p>
-              </div>
-            </div>
-              <div id="index-flowday" style="height:410px"></div>
-          </div>
-
-          
-            <!--business news-->
-          <div class="col-12 news">
+         </div>
+         <!--top wallet-->
+         <div class="col-12 topWallet">
             <div class="jumbotron bg-transparent topText">
-              <div class="text-center"><h3>Business News</h3></div>
+               <div class="text-center">
+                  <h3>Top Wallets Used</h3>
+               </div>
             </div>
-
-              <button class="col-12 d-flex flex-nowrap my-5 my-sm-2 mr-3 px-4 px-sm-5 border-0 rounded text-left bg-transparent art">
-                <span class="col-9 p-0 headline">
-                  <span class="col-12 d-block m-0 sou"> <b> | </b></span>
-                  <span class="col-12 p-0 pb-2 tit">2 family COVID-19 clusters a asobering remindera about</span>
-                </span>
-                <img class="col-3 p-0 ml-1 rounded-circle photo" src="https://placehold.it/150x150?text=IMAGE" alt="photo">
+            <div class="col-10 col-sm-8 p-0 d-flex flex-wrap index-amountSpentWallet" style="margin:0 auto">
+               <span class="col-10 ml-4">Amount Spent</span>
+               <span class="col-8 p-0">item item </span>
+               <span class="col-4 p-0 text-right value">$$$$</span>
+            </div>
+            <div class="col-10 col-sm-8 p-0 d-flex flex-wrap index-purchaseQtyWallet" style="margin:0 auto">
+               <span class="col-10 ml-4">Purchase Quantity</span>
+               <span class="col-8 p-0">item item </span>
+               <span class="col-4 p-0 text-right value">####</span>
+            </div>
+         </div>
+         <!--currency converter-->
+         <div class="col-12 d-flex flex-wrap justify-content-center CurrConv">
+            <div class="col-12 jumbotron bg-transparent topText">
+               <div class="text-center">
+                  <h3>Currency Converter</h3>
+               </div>
+            </div>
+            <div class="col-12 p-0 d-flex flex-wrap justify-content-center">
+               <div class="col-12 col-sm-10 my-2 CurrVald">
+                  <div class="col-10 mx-auto justify-content-center dropup">
+                     <button class="col-12 btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     AKN
+                     </button>
+                     <div class="col-10 col-sm-11 dropdown-menu CurDrop">
+                        <a class="dropdown-item" href="#">AKN</a>
+                        <a class="dropdown-item" href="#">ABN</a>
+                        <a class="dropdown-item" href="#">ACT</a>
+                        <a class="dropdown-item" href="#">AKN</a>
+                        <a class="dropdown-item" href="#">ABN</a>
+                        <a class="dropdown-item" href="#">ACT</a>
+                        <a class="dropdown-item" href="#">AKN</a>
+                        <a class="dropdown-item" href="#">ABN</a>
+                        <a class="dropdown-item" href="#">ACT</a>
+                        <a class="dropdown-item" href="#">AKN</a>
+                        <a class="dropdown-item" href="#">ABN</a>
+                        <a class="dropdown-item" href="#">ACT</a>
+                        <a class="dropdown-item" href="#">AKN</a>
+                     </div>
+                  </div>
+                  <form class="col-12 h-50 mx-auto">
+                     <input class="col-12 w-100 h-100" style="border: 0" type="text" name="currency-field" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00">
+                  </form>
+               </div>
+               <div class="col-12 col-sm-10 my-2 CurrVald">
+                  <div class="col-10 mx-auto justify-content-center dropup">
+                     <button class="col-12 btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Country
+                     </button>
+                     <div class="col-10 col-sm-11 dropdown-menu CurDrop">
+                        <a class="dropdown-item" href="#">AKN</a>
+                        <a class="dropdown-item" href="#">ABN</a>
+                        <a class="dropdown-item" href="#">ACT</a>
+                        <a class="dropdown-item" href="#">AKN</a>
+                        <a class="dropdown-item" href="#">ABN</a>
+                        <a class="dropdown-item" href="#">ACT</a>
+                        <a class="dropdown-item" href="#">AKN</a>
+                        <a class="dropdown-item" href="#">ABN</a>
+                        <a class="dropdown-item" href="#">ACT</a>
+                        <a class="dropdown-item" href="#">AKN</a>
+                        <a class="dropdown-item" href="#">ABN</a>
+                        <a class="dropdown-item" href="#">ACT</a>
+                        <a class="dropdown-item" href="#">AKN</a>
+                        <a class="dropdown-item" href="#">ABN</a>
+                        <a class="dropdown-item" href="#">ACT</a>
+                     </div>
+                  </div>
+                  <form class="col-12 h-50 mx-auto">
+                     <input class="col-12 w-100 h-100" style="border: 0" type="text" name="currency-field" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00">
+                  </form>
+               </div>
+            </div>
+            <button type="button" class="btn col-4 col-sm-3 h-100 mt-4 mt-lg-5 btn-default conButt"><b>Convert</b></button>
+         </div>
+         <!--cashflow-->
+         <div class="col-12 colflow">
+            <div class="jumbotron bg-transparent topText">
+               <div class="text-center">
+                  <h3>Cashflow</h3>
+                  <p>Were you money conscious this month?</p>
+               </div>
+            </div>
+            <div id="index-flowday" style="height:410px"></div>
+         </div>
+         <!--business news-->
+         <div class="col-12 news">
+            <div class="jumbotron bg-transparent topText">
+               <div class="text-center">
+                  <h3>Business News</h3>
+               </div>
+            </div>
+            <button class="col-12 d-flex flex-nowrap my-5 my-sm-2 mr-3 px-4 px-sm-5 border-0 h-100 rounded text-left bg-transparent art">
+               <span class="col-8 col-sm-9 p-0 headline">
+               <span class="col-12 d-block m-0 sou"> <b> | </b></span>
+               <span class="col-12 p-0 pb-2 tit">...</span>
+               </span>
+               <span class="col-4 d-flex col-sm-3 p-0 ml-1 justify-content-center"><img src="https://placehold.it/2700x750?text=IMAGE" alt="photo"></span>
             </button>
-            <button class="col-12 d-flex flex-nowrap my-5 my-sm-2 mr-3 px-4 px-sm-5 border-0 rounded text-left bg-transparent art">
-                <span class="col-9 p-0 headline">
-                  <span class="col-12 d-block m-0 sou"> <b> | </b></span>
-                  <span class="col-12 p-0 pb-2 tit">2 family COVID-19 clusters a asobering remindera about</span>
-                </span>
-                <img class="col-3 p-0 ml-1 rounded-circle photo" src="https://placehold.it/150x150?text=IMAGE" alt="photo">
+            <button class="col-12 d-flex flex-nowrap my-5 my-sm-2 mr-3 px-4 px-sm-5 border-0 h-100 rounded text-left bg-transparent art">
+               <span class="col-8 col-sm-9 p-0 headline">
+               <span class="col-12 d-block m-0 sou"> <b> | </b></span>
+               <span class="col-12 p-0 pb-2 tit">...</span>
+               </span>
+               <span class="col-4 d-flex col-sm-3 p-0 ml-1 justify-content-center"><img src="https://placehold.it/2700x750?text=IMAGE" alt="photo"></span>
             </button>
-            <button class="col-12 d-flex flex-nowrap my-5 my-sm-2 mr-3 px-4 px-sm-5 border-0 rounded text-left bg-transparent art">
-                <span class="col-9 p-0 headline">
-                  <span class="col-12 d-block m-0 sou"> <b> | </b></span>
-                  <span class="col-12 p-0 pb-2 tit">2 family COVID-19 clusters a asobering remindera about</span>
-                </span>
-                <img class="col-3 p-0 ml-1 rounded-circle photo" src="https://placehold.it/150x150?text=IMAGE" alt="photo">
+            <button class="col-12 d-flex flex-nowrap my-5 my-sm-2 mr-3 px-4 px-sm-5 border-0 h-100 rounded text-left bg-transparent art" >
+               <span class="col-8 col-sm-9 p-0 headline">
+               <span class="col-12 d-block m-0 sou"> <b> | </b></span>
+               <span class="col-12 p-0 pb-2 tit">...</span>
+               </span>
+               <span class="col-4 d-flex col-sm-3 p-0 ml-1 justify-content-center"><img src="https://placehold.it/2700x750?text=IMAGE" alt="photo"></span>
             </button>
-            <button class="col-12 d-flex flex-nowrap my-5 my-sm-2 mr-3 px-4 px-sm-5 border-0 rounded text-left bg-transparent art">
-                <span class="col-9 p-0 headline">
-                  <span class="col-12 d-block m-0 sou"> <b> | </b></span>
-                  <span class="col-12 p-0 pb-2 tit">2 family COVID-19 clusters a asobering remindera about</span>
-                </span>
-                <img class="col-3 p-0 ml-1 rounded-circle photo" src="https://placehold.it/150x150?text=IMAGE" alt="photo">
+            <button class="col-12 d-flex flex-nowrap my-5 my-sm-2 mr-3 px-4 px-sm-5 border-0 h-100 rounded text-left bg-transparent art">
+               <span class="col-8 col-sm-9 p-0 headline">
+               <span class="col-12 d-block m-0 sou"> <b> | </b></span>
+               <span class="col-12 p-0 pb-2 tit">...</span>
+               </span>
+               <span class="col-4 d-flex col-sm-3 p-0 ml-1 justify-content-center"><img src="https://placehold.it/2700x750?text=IMAGE" alt="photo"></span>
             </button>
             <p class="m-0 text-center upTxt">Last updated on <b><span id="update"></span></b></p>
-          </div>
-
-    </div>
-
-
-    
-    <div class="plus-button"><p class="mx-auto h-100 plus">+</p></div>     
-
-
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <div id="chart_div"></div>
-
-        <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-        
-        <!-- Javascript and JSON -->
-        <script src="script.js"></script>
-</body>
+         </div>
+      </div>
+      <div class="plus-button">
+         <p class="mx-auto h-100 plus">+</p>
+      </div>
+      <script src="https://www.gstatic.com/charts/loader.js"></script>
+      <div id="chart_div"></div>
+      <!-- jQuery -->
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+      <!-- Javascript and JSON -->
+      <script src="script.js"></script>
+   </body>
 </html>
-
-
-

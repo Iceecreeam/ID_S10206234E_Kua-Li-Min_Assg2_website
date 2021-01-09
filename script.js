@@ -765,59 +765,71 @@ function wallInt() {
 }
 
 
-
+var news = []
 /*business news*/
-    /*https://stackoverflow.com/questions/61951713/problem-with-cors-policy-when-making-a-request-to-https-newsapi-org*/
-    const proxyUrl = "https://cors-anywhere.herokuapp.com/"
-    const url = `${proxyUrl}https://www.channelnewsasia.com/rssfeeds/8395954`;
-    const request = new Request(url);
+busInt()
+function busInt() {
+         /*https://stackoverflow.com/questions/61951713/problem-with-cors-policy-when-making-a-request-to-https-newsapi-org*/
+         const proxyUrl = "https://cors-anywhere.herokuapp.com/"
+         const url = `${proxyUrl}https://www.channelnewsasia.com/rssfeeds/8395954`;
+         const request = new Request(url);
 
-    /*https://css-tricks.com/how-to-fetch-and-parse-rss-feeds-in-javascript/
-    fetch news*/
-    fetch(url)
-    .then(response => response.text())
-    .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-    .then(function(data){    
-    var channel = data.querySelectorAll("channel")[0]
-    $("#update").text(channel.querySelectorAll("lastBuildDate")[0].innerHTML)
-    console.log('update time')
-console.log('a')
+         /*https://css-tricks.com/how-to-fetch-and-parse-rss-feeds-in-javascript/
+         fetch news*/
+         fetch(url)
+         .then(response => response.text())
+         .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+         .then(function(data){  
+         var channel = data.querySelectorAll("channel")[0]
+         $("#update").text(channel.querySelectorAll("lastBuildDate")[0].innerHTML) /*change updated date*/
 
-    
+            
 
+         /*update articles*/
+         $(".news>button").remove(); /*clear div*/
+         var arti = channel.querySelectorAll("item")
+         for (i = 0; i < 4; i++){
 
+            /*get relevant variables*/
+            var tit = arti[i].querySelectorAll("title")[0].innerHTML
+            var tim = new Date().getHours() - Number(arti[i].querySelectorAll("pubDate")[0].innerHTML.slice(17,19))
+            var pic = String(arti[i].querySelectorAll("thumbnail")[0]['attributes'][2]['value'])
+            var lin = arti[i].querySelectorAll("link")[0].innerHTML
 
-    var arti = channel.querySelectorAll("item")
-    for (i = 0; i < 4; i++){
-       console.log(arti[i])
-       var tit = arti[i].querySelectorAll("title")[0].innerHTML
-       var tim = arti[i].querySelectorAll("pubDate")[0].innerHTML
-       var pic = arti[i].querySelectorAll("media:thumbnail")[0].innerHTML
-       var lin = arti[i].querySelectorAll("link")[0].innerHTML
-       console.log(pic)
-       console.log(lin)
+            /*shorten title if needed*/
+            if (tit.length >= 70){
+               tit = tit.slice(0, 67)
+               tit += "..."
+            }
 
-       /*   <button class="col-12 d-flex flex-nowrap my-5 my-sm-2 mr-3 px-4 px-sm-5 border-0 rounded text-left bg-transparent art">
-                <span class="col-9 p-0 headline">
-                  <span class="col-12 d-block m-0 sou"> <b> | </b></span>
-                  <span class="col-12 p-0 pb-2 tit">2 family COVID-19 clusters a asobering remindera about</span>
-                </span>
-                <img class="col-3 p-0 ml-1 rounded-circle photo" src="https://placehold.it/150x150?text=IMAGE" alt="photo">
-            </button>*/
+            /*add title and link to news list*/
+            news.push([tit, lin])
 
-         
-    }
-   })
+            
+            /*create articles*/
+            $( '<button class="col-12 d-flex flex-nowrap my-5 my-sm-3 mr-3 px-4 px-sm-5 border-0 h-100 rounded text-left bg-transparent art"><span class="col-8 col-sm-9 p-0 headline"><span class="col-12 d-block m-0 sou">'
+            + tim + ' hours ago' + '<b> | </b></span><span class="col-12 p-0 pb-2 tit">'
+            + tit + '</span></span><span class="col-4 d-flex col-sm-3 p-0 h-100 w-100 ml-1 justify-content-center"><img src="'
+            + pic + '" alt="photo"></span></button>' ).insertBefore(".upTxt")
 
+            
+         }
 
+      })
+}
 
-
-
-
-
-
-
-
+/*if news article is clicked*/
+$(document).on("click", ".art" , function() { /*https://www.tutorialrepublic.com/faq/how-to-bind-click-event-to-dynamically-added-elements-in-jquery.php*/
+   console.log()
+   for (i = 0; i < news.length; i++){
+      if (news[i][0] == this.innerHTML.slice(this.innerHTML.indexOf('tit">') + 5, this.innerHTML.indexOf('</span></span><span')))
+      {
+         open(news[i][1], "blank_")
+         this.blur()
+         break
+      }
+   }
+})
 
 
 

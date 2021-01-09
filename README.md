@@ -5,6 +5,7 @@ https://codepen.io/559wade/pen/LRzEjj
 https://developers.google.com/chart/interactive/docs/gallery/linechart
 https://www.reliablepsd.com/ultimate-google-font-pairings/(31)
 https://getbootstrap.com/docs/4.0/components/dropdowns/
+https://www.tutorialrepublic.com/faq/how-to-bind-click-event-to-dynamically-added-elements-in-jquery.php
 
 
 https://www.flaticon.com/free-icon/draw_61456
