@@ -773,7 +773,7 @@ function busInt() {
          const proxyUrl = "https://cors-anywhere.herokuapp.com/"
          const url = `${proxyUrl}https://www.channelnewsasia.com/rssfeeds/8395954`;
          const request = new Request(url);
-
+         
          /*https://css-tricks.com/how-to-fetch-and-parse-rss-feeds-in-javascript/
          fetch news*/
          fetch(url)
@@ -784,36 +784,71 @@ function busInt() {
          $("#update").text(channel.querySelectorAll("lastBuildDate")[0].innerHTML) /*change updated date*/
 
             
-
          /*update articles*/
          $(".news>button").remove(); /*clear div*/
          var arti = channel.querySelectorAll("item")
-         for (i = 0; i < 4; i++){
-
+         var rand = Math.floor(Math.random() * 3) + 1 /*randomise articles*/
+         var rand1 = Math.floor(Math.random() * 5) + 1 /*randomise articles*/
+         for (p = 0; p < 4; p++){
             /*get relevant variables*/
-            var tit = arti[i].querySelectorAll("title")[0].innerHTML
-            var tim = new Date().getHours() - Number(arti[i].querySelectorAll("pubDate")[0].innerHTML.slice(17,19))
-            var pic = String(arti[i].querySelectorAll("thumbnail")[0]['attributes'][2]['value'])
-            var lin = arti[i].querySelectorAll("link")[0].innerHTML
+            var tit = arti[(p + rand1) * rand].querySelectorAll("title")[0].innerHTML
+            var tim = new Date().getHours() - Number(arti[(p + rand1) * rand].querySelectorAll("pubDate")[0].innerHTML.slice(17,19))
+            var pic = String(arti[(p + rand1) * rand].querySelectorAll("thumbnail")[0]['attributes'][2]['value'])
+            var lin = arti[(p + rand1) * rand].querySelectorAll("link")[0].innerHTML
+
 
             /*shorten title if needed*/
             if (tit.length >= 70){
                tit = tit.slice(0, 67)
                tit += "..."
+            }            
+            
+            
+            /*modify time if needed*/
+            var suff = " hour"
+            if (tim > 1){
+               suff += "s"
+            }
+            if (tim < 0){
+               var month=  arti[(p + rand1) * rand].querySelectorAll("pubDate")[0].innerHTML.slice(8, 11)
+               var year =  arti[(p + rand1) * rand].querySelectorAll("pubDate")[0].innerHTML.slice(12,16)
+               var day = arti[(p + rand1) * rand].querySelectorAll("pubDate")[0].innerHTML.slice(5,7)
+               
+
+               for (i in mnthStr){
+                  if (mnthStr[i].includes(month)){
+                     month = i
+                  }
+               }
+               tim = Math.floor((new Date() - new Date(month + "/" + day + "/" + year))/ (1000 * 3600 * 24))
+               suff = " day"
+               if (tim > 1){
+                  suff += "s"
+               } 
             }
 
+            
+
+            if ((tim + suff) == "0 hour"){
+               tim = "This Just"
+               suff = " In!"
+
+            }
+            else{
+               suff += " ago"
+            }
+
+               
             /*add title and link to news list*/
             news.push([tit, lin])
-
-            
             /*create articles*/
             $( '<button class="col-12 d-flex flex-nowrap my-5 my-sm-3 mr-3 px-4 px-sm-5 border-0 h-100 rounded text-left bg-transparent art"><span class="col-8 col-sm-9 p-0 headline"><span class="col-12 d-block m-0 sou">'
-            + tim + ' hours ago' + '<b> | </b></span><span class="col-12 p-0 pb-2 tit">'
+            + tim + suff + '<b> | </b></span><span class="col-12 p-0 pb-2 tit">'
             + tit + '</span></span><span class="col-4 d-flex col-sm-3 p-0 h-100 w-100 ml-1 justify-content-center"><img src="'
             + pic + '" alt="photo"></span></button>' ).insertBefore(".upTxt")
-
-            
-         }
+               
+            }
+         
 
       })
 }
@@ -830,6 +865,92 @@ $(document).on("click", ".art" , function() { /*https://www.tutorialrepublic.com
       }
    }
 })
+
+
+
+
+// Jquery Dependency
+
+$("input[data-type='currency']").on({
+   keyup: function() {
+     formatCurrency($(this));
+   },
+   blur: function() { 
+     formatCurrency($(this), "blur");
+   }
+});
+
+
+/* normat currency, entire function from https://codepen.io/559wade/pen/LRzEjj */
+function formatCurrency(input, blur) {
+ // appends $ to value, validates decimal side
+ // and puts cursor back in right position.
+ 
+ // get input value
+ var input_val = input.val();
+ 
+ // don't validate empty input
+ if (input_val === "") { return; }
+ // original length
+ var original_len = input_val.length;
+
+ // initial caret position 
+ var caret_pos = input.prop("selectionStart");
+   
+ // check for decimal
+ if (input_val.indexOf(".") >= 0) {
+
+   // get position of first decimal
+   // this prevents multiple decimals from
+   // being entered
+   var decimal_pos = input_val.indexOf(".");
+
+   // split number by decimal point
+   var left_side = input_val.substring(0, decimal_pos);
+   var right_side = input_val.substring(decimal_pos);
+
+   // add commas to left side of number
+   left_side = formatNumber(left_side);
+
+   // validate right side
+   right_side = formatNumber(right_side);
+   
+   // On blur make sure 2 numbers after decimal
+   if (blur === "blur") {
+     right_side += "00";
+   }
+   
+   // Limit decimal to only 2 digits
+   right_side = right_side.substring(0, 2);
+
+   // join number by .
+   input_val = "$" + left_side + "." + right_side;
+
+ } else {
+   // no decimal entered
+   // add commas to number
+   // remove all non-digits
+   input_val = formatNumber(input_val);
+   input_val = "$" + input_val;
+   
+   // final formatting
+   if (blur === "blur") {
+     input_val += ".00";
+   }
+ }
+ 
+ // send updated string to input
+ input.val(input_val);
+
+ // put caret back in the right position
+ var updated_len = input_val.length;
+ caret_pos = updated_len - original_len + caret_pos;
+ input[0].setSelectionRange(caret_pos, caret_pos);
+}
+
+
+
+
 
 
 

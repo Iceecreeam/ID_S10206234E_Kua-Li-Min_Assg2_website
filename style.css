@@ -9,14 +9,11 @@ body,
 	margin: 0;
 }
 
-.art{
-	border: solid saddlebrown
-}
-
 /*remove focus outline*/
 input:focus, button:focus, .btn:focus{
-    outline: none;
-    box-shadow: none;
+	outline: none;
+	color: #aaaaaa;
+	box-shadow: none;
     filter: invert(60%);
 }
 
