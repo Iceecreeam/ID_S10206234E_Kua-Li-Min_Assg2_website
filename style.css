@@ -148,7 +148,7 @@ button.dropdown-toggle {
 	margin-top: 2%;
 }
 
-.CurDrop {
+.curDrop {
 	font-size: 1.5vw;
 	overflow-y: scroll;
 	max-height: 15vw;
@@ -168,6 +168,10 @@ button.dropdown-toggle {
 	width: 9.5vw;
 	height: 9.5vw;
 	object-fit: cover
+}
+
+#index-flowday{
+	height: 15vw;
 }
 
 @media only screen and (max-width: 900px) {
@@ -228,10 +232,11 @@ button.dropdown-toggle {
 	/*tiles*/
 	/*progress bar*/
 	.progress {
-		transform: rotate(270deg);
 		margin: 17% 0;
 		height: 60vw;
 		border-radius: 50px 8px 8px 50px;
+		background-color: 0 0 0 0;
+		transform: rotate(270deg);
 	}
 	.barTxt {
 		transform: rotate(90deg);
@@ -251,7 +256,7 @@ button.dropdown-toggle {
 		font-size: 4.5vw;
 		letter-spacing: 0.5vw;
 	}
-	.CurDrop {
+	.curDrop {
 		font-size: 4vw;
 		overflow-y: scroll;
 		max-height: 40vw;
@@ -269,7 +274,12 @@ button.dropdown-toggle {
 		width: 18vw;
 		height: 18vw;
 	}
+	#index-flowday{
+		height: 60vw;
+	}
 }
+
+
 
 @media only screen and (max-width: 575px) {
 	body,
@@ -338,5 +348,10 @@ button.dropdown-toggle {
 	.art>span>img {
 		width: 24vw;
 		height: 24vw;
+	}
+
+	/*graph*/
+	#index-flowday{
+		height: 90vw;
 	}
 }

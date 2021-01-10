@@ -699,7 +699,7 @@ function dataInt() {
     }
 
 
-    /*set the dates of transactions to be recent and realistic (change all the data to be dated the current month and year)*/
+    /*set the dates and positivity of transactions to be recent and realistic (change all the data to be dated the current month and year)*/
     for (const [key, value] of Object.entries(data["Trans"])) {
       var date = new Date().getDate()
       var month = new Date().getMonth()+1
@@ -711,10 +711,13 @@ function dataInt() {
               month += 12
               year -= 1
           }
-
       }
+      if (Math.floor(Math.random() * 10) > 4){ /*change some transactions to negative*/
+         data["Trans"][key]["amt"] -= 2 * data["Trans"][key]["amt"]
+     }
       data["Trans"][key]["date"] = [Math.floor(Math.random() * date) + 1, month, year]
     }
+
 
     /* \/ UNCOMMENT TO START WITH NO TRANSACTIONS*/
     /*delete data["Trans"]*/
@@ -767,9 +770,84 @@ function wallInt() {
 
 
 /*INFORMATION TILES*/
+var amtSp = 0
+WBigP = []
+for (i in wall){
+   var BigP = 0
+    for (x in trans){
+       if((trans[x]['date'][1] == new Date().getMonth()+1) && i == trans[x]['wall'] && trans[x]['amt'] < 0){
+          BigP -= trans[x]['amt']
+       }
+    }  
+    WBigP.push([i, BigP])
+    amtSp += BigP
+ }
+   $("#tot").html("$" + amtSp)
+
+   $(".Food").css("width", WBigP[0][1]/amtSp + "%")
+   $(".Transport").css("width", WBigP[1][1]/amtSp + "%")
+   $(".Recreation").css("width", WBigP[2][1]/amtSp + "%")
+   $(".Others").css("width", WBigP[3][1]/amtSp + "%")
+
+/*change biggest purchase*/
+var bigP = []
+for (i in trans){
+   if( trans[i]['date'][1] == new Date().getMonth()+1){
+   bigP.push([trans[i]['amt'], trans[i]['name']])
+   }
+}
+var biggest = bigP[0]
+for (i in bigP){
+   if (bigP[i][0] < biggest[0]){
+      biggest = bigP[i]
+   }
+}
+
+if (biggest[1].length >= 15){
+   biggest[1] = biggest[1].slice(0, 12)
+   biggest[1] += "..."
+}     
+$(".index-item>span").html(biggest[1])
+$(".index-item>span.value").html("$" + -biggest[0])
 
 
+/*change top wallet*/
+var WBigP = []
+for (i in wall){
+  var cBigP = 0
+   var bigP =0
+   for (x in trans){
+      if((trans[x]['date'][1] == new Date().getMonth()+1) && i == String(trans[x]['wall']) && trans[x]['amt'] < 0){
+         bigP += trans[x]['amt']
+         cBigP ++
+      }
+   }
+   
+   WBigP.push([i, bigP, cBigP])
+}
+var bigPur = WBigP[0]
+for (i in WBigP){
+   if (WBigP[i][1] < bigPur[1]){
+      bigPur = [WBigP[i][0], WBigP[i][1]]
+   }
+}
+
+bigPur[1] = Math.round((bigPur[1] + Number.EPSILON) * 100) / 100
+$(".index-amountSpentWallet>.col-8").html(bigPur[0])
+$(".index-amountSpentWallet>.value").html("$" + -bigPur[1])
 /*currency converter tile*/
+
+var bigPur = WBigP[0]
+for (i in WBigP){
+   if (WBigP[i][2] > bigPur[2]){
+      bigPur = [WBigP[i][0], WBigP[i][2]]
+   }
+}
+
+$(".index-purchaseQtyWallet>span.col-8").html(bigPur[0])
+$(".index-purchaseQtyWallet>span.value").html(bigPur[1])
+
+
 
 var curr = [] /*currency rates*/
 /* fetch currency rates*/
@@ -792,7 +870,7 @@ function currInt() {
             }
             var country = i.slice(0, 3).toUpperCase()
             curr.push([country, data[i]])
-            $(".CurDrop").append('<span class="dropdown-item dropCountry">'+country+'</span>');
+            $(".curDrop").append('<span class="dropdown-item dropCountry">'+country+'</span>');
          }
          })
 }
@@ -930,6 +1008,12 @@ $(document).on("click", ".dropCountry" , function() {
    ($(this).parent().siblings("button")).text($(this).text())
 })
 
+/*width of device*/
+
+$(document).on("click", ".dropCountry" , function() {
+   ($(this).parent().parent().siblings('form').children('input')).val("")
+})
+
 /*clear other input when focus is on one)*/
 $('.curFor>input').focus(function () {
    $($(this).parent().parent().siblings(".currVald").children('form').children('input')).val("")
@@ -940,9 +1024,11 @@ var val = ''
 $(document).on("click", ".conButt" , function() {
    $(".curFor>input").each(function()
    {
+      
       if ($(this).val() != ''){
          country = $(this).parent().parent().children(".dropup>.button")['prevObject'][0]['innerText'].slice(0,3)
          othCountry = $(this).parent().parent().siblings(".currVald").children(".dropup>.button")['prevObject'][0]['innerText'].slice(0,3)
+         
          for (i in curr){
             if (curr[i][0] == country)
             {
@@ -955,14 +1041,9 @@ $(document).on("click", ".conButt" , function() {
          }
          var valu = $(this).val()
          val = (Number(valu.replace(/[$,]/g, '')) / othCountry) * country
-         console.log(curr)
-      
 
          
-      }
-      if ($(this).val() == ''){
-         $($(this).val(formatCurrency(val)))
-
+         $("input").not(this).val(formatCurrency(val))
       }
    });
    $(".conButt").blur()
@@ -1069,8 +1150,42 @@ $(document).on("click", ".art" , function() { /*https://www.tutorialrepublic.com
 
 
 
+/*if plus button is pressed*/
+$(document).on("click", ".plus" , function() {
+   
+})
 
 
+/*input transaction data into graph*/
+var graph = []
+for(i=0; i<new Date().getDate(); i++){
+   graph.push([i+1,0,0,0])
+}
+
+
+/*update graph*/
+graphData()
+function graphData(){
+   for(i=0; i<trans.length; i++)
+   {
+      tran = trans[i]
+      if( tran['date'][1] == new Date().getMonth()+1){
+        graph[tran['date'][0] - 1][1] += tran['amt']
+        if (tran['amt'] <= 0){
+         graph[tran['date'][0] - 1][3] -= tran['amt']
+        }
+        else{
+         graph[tran['date'][0] - 1][2] += tran['amt']
+        }
+      }
+   }
+}
+
+for(i=0; i<graph.length; i++){
+   for(x=0; x<graph[i].length; x++){
+      graph[i][x] = Math.round((graph[i][x] + Number.EPSILON) * 100) / 100
+   }
+}
 
 /*add values to line graph*/
 initgraph()
@@ -1081,31 +1196,17 @@ function initgraph() {
           function indexflowday() {
 
                 var data = new google.visualization.DataTable();
-                data.addColumn('number', 'X');
-                data.addColumn('number', 'Dogs');
+                data.addColumn('number', 'day');
+                data.addColumn('number', 'nett');
+                data.addColumn('number', 'gain');
+                data.addColumn('number', 'lost');
 
-                data.addRows([
-                  [0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9],
-                  [6, 11],  [7, 27],  [8, 33],  [9, 40],  [10, 32], [11, 35],
-                  [12, 30], [13, 40], [14, 42], [15, 47], [16, 44], [17, 48],
-                  [18, 52], [19, 54], [20, 42], [21, 55], [22, 56], [23, 57],
-                  [24, 60], [25, 50], [26, 52], [27, 51], [28, 49], [29, 53],
-                  [30, 55], [31, 60], [32, 61], [33, 59], [34, 62], [35, 65],
-                  [36, 62], [37, 58], [38, 55], [39, 61], [40, 64], [41, 65],
-                  [42, 63], [43, 66], [44, 67], [45, 69], [46, 69], [47, 70],
-                  [48, 72], [49, 68], [50, 66], [51, 65], [52, 67], [53, 70],
-                  [54, 71], [55, 72], [56, 73], [57, 75], [58, 70], [59, 68],
-                  [60, 64], [61, 60], [62, 65], [63, 67], [64, 68], [65, 69],
-                  [66, 70], [67, 72], [68, 75], [69, 80]
-                ]);
+                data.addRows(graph);
 
-                var options = {
-                  hAxis: {
-                    title: 'Time'
-                  },
-                  vAxis: {
-                    title: 'Popularity'
-                  }
+                var options = {    
+                hAxis: {title: 'Dollar'},
+                vAxis: {title: 'Day'},
+                backgroundColor: { fill:'transparent' }
                 };
 
                 var chart = new google.visualization.LineChart(document.getElementById('index-flowday'));
