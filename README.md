@@ -1,3 +1,7 @@
+# Link to Pitch Video
+
+https://drive.google.com/file/d/1cPgyyQxNSYTYsC3Zm-L_JNUqNS5BBQqT/view?usp=sharing
+
 # Expense Tracker
 
 This is an expense tracker that will allow you to look at your finance data from many angles such as line charts and most purchased items. It even includes additional features such as a progress bar to show the proportions of their spending, a 2 way currency converter with a wide range of currencies and, and a section that shows business news.
