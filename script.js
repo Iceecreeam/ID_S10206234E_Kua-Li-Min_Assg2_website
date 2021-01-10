@@ -782,7 +782,7 @@ for (i in wall){
     WBigP.push([i, BigP])
     amtSp += BigP
  }
-   $("#tot").html("$" + Math.round((100amtSp + Number.EPSILON) * 100) / )
+   $("#tot").html("$" + Math.round((amtSp + Number.EPSILON) * 100) / )
 
    $(".Food").css("width", WBigP[0][1]/amtSp + "%")
    $(".Transport").css("width", WBigP[1][1]/amtSp + "%")
