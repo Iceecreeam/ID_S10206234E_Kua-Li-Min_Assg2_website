@@ -3,7 +3,7 @@ if (window.localStorage.getItem("data") == null){
   dataInt()
 }
 
-/*function to set local storage for first time users*/
+/*function to set local storage for first time users (with or without generated transactions)*/
 function dataInt() {
   
    /*dictionary of wallet and transaction data; would appear this way in local storage (formatted like sampleExpenses.json)*/
@@ -784,10 +784,11 @@ function currInt() {
          delete data['timestamp']
          delete data['preliminary']
          delete data['end_of_month']
+         data.SGD = 1
          for (i in data){
             data[i] = Number(data[i])
             if (i.includes('100')){
-               data[i] *= 100
+               data[i] /= 100
             }
             var country = i.slice(0, 3).toUpperCase()
             curr.push([country, data[i]])
@@ -796,20 +797,20 @@ function currInt() {
          })
 }
 
-/* format currency, here to function formatCurrency(input, blur) from https://codepen.io/559wade/pen/LRzEjj */
+/* format currency, here to function formatCurrencyInput(input, blur) from https://codepen.io/559wade/pen/LRzEjj */
 $("input[data-type='currency']").on({
    keyup: function() {
-     formatCurrency($(this));
+     formatCurrencyInput($(this));
    },
    blur: function() { 
-     formatCurrency($(this), "blur");
+     formatCurrencyInput($(this), "blur");
    }
 });
 function formatNumber(n) {
  // format number 1000000 to 1,234,567
  return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 }
-function formatCurrency(input, blur) {
+function formatCurrencyInput(input, blur) {
  // appends $ to value, validates decimal side
  // and puts cursor back in right position.
  
@@ -876,13 +877,96 @@ function formatCurrency(input, blur) {
  input[0].setSelectionRange(caret_pos, caret_pos);
 }
 
+/*modified code from from https://codepen.io/559wade/pen/LRzEjj, formats currency from float into string*/
+function formatCurrency(input_val){
+ // appends $ to value, validates decimal side
+ // and puts cursor back in right position.
+ input_val = String(Math.round((input_val + Number.EPSILON) * 100) / 100)
+ 
+
+   
+ // check for decimal
+ if (input_val.indexOf(".") >= 0) {
+
+   // get position of first decimal
+   // this prevents multiple decimals from
+   // being entered
+   var decimal_pos = input_val.indexOf(".");
+
+   // split number by decimal point
+   var left_side = input_val.substring(0, decimal_pos);
+   var right_side = input_val.substring(decimal_pos);
+
+   // add commas to left side of number
+   left_side = formatNumber(left_side);
+
+   // validate right side
+   right_side = formatNumber(right_side);
+   
+   //  make sure 2 numbers after decimal
+   right_side += "00";
+   
+   // Limit decimal to only 2 digits
+   right_side = right_side.substring(0, 2);
+
+   // join number by .
+   input_val = "$" + left_side + "." + right_side;
+
+ } else {
+   // no decimal entered
+   // add commas to number
+   // remove all non-digits
+   input_val = formatNumber(input_val);
+   input_val = "$" + input_val;
+   
+   // final formatting
+   input_val += ".00";
+ }
+ return input_val
+}
+
 /*change innerhtml of drowpdown button to selected country*/
 $(document).on("click", ".dropCountry" , function() {
    ($(this).parent().siblings("button")).text($(this).text())
 })
 
+/*clear other input when focus is on one)*/
+$('.curFor>input').focus(function () {
+   $($(this).parent().parent().siblings(".currVald").children('form').children('input')).val("")
+})
 
+/*when convert button is pressed*/
+var val = ''
+$(document).on("click", ".conButt" , function() {
+   $(".curFor>input").each(function()
+   {
+      if ($(this).val() != ''){
+         country = $(this).parent().parent().children(".dropup>.button")['prevObject'][0]['innerText'].slice(0,3)
+         othCountry = $(this).parent().parent().siblings(".currVald").children(".dropup>.button")['prevObject'][0]['innerText'].slice(0,3)
+         for (i in curr){
+            if (curr[i][0] == country)
+            {
+               country = curr[i][1]
+            }
+            if (curr[i][0] == othCountry)
+            {
+               othCountry = curr[i][1]
+            }
+         }
+         var valu = $(this).val()
+         val = (Number(valu.replace(/[$,]/g, '')) / othCountry) * country
+         console.log(curr)
+      
 
+         
+      }
+      if ($(this).val() == ''){
+         $($(this).val(formatCurrency(val)))
+
+      }
+   });
+   $(".conButt").blur()
+})
 
 var news = []
 /*business news*/
@@ -906,8 +990,8 @@ function busInt() {
          /*update articles*/
          $(".news>button").remove(); /*clear div*/
          var arti = channel.querySelectorAll("item")
-         var rand = Math.floor(Math.random() * 5) + 1 /*randomise articles*/
-         var rand1 = Math.floor(Math.random() * 5) + 1 /*randomise articles*/
+         var rand = Math.floor(Math.random() * 3) + 1 /*randomise articles*/
+         var rand1 = Math.floor(Math.random() * 10) + 1 /*randomise articles*/
          for (p = 0; p < 4; p++){
             /*get relevant variables*/
             var tit = arti[(p + rand1) * rand].querySelectorAll("title")[0].innerHTML
@@ -973,7 +1057,6 @@ function busInt() {
 }
 /*if news article is clicked*/
 $(document).on("click", ".art" , function() { /*https://www.tutorialrepublic.com/faq/how-to-bind-click-event-to-dynamically-added-elements-in-jquery.php*/
-   console.log()
    for (i = 0; i < news.length; i++){
       if (news[i][0] == this.innerHTML.slice(this.innerHTML.indexOf('tit">') + 5, this.innerHTML.indexOf('</span></span><span')))
       {
